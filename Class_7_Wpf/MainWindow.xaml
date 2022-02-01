@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Class_7_Wpf"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
        Title="MainWindow" Height="450" Width="800">
+    
     <!-- прописываем команду для кнопок Выход (и Выход если нет текста CanExecute), Открыть, Сохранить в окне Window,    нажимаем F12 для кода -->
     <Window.CommandBindings>
         <CommandBinding Command="Close" Executed="ExitExecuted" CanExecute="ExitCanExecute"/>
@@ -36,18 +39,13 @@
             <!-- внутри 3 компонента ToolBar, помещаем ComboBox, Button, StackPanel ( с RadioButton)   -->
             <ToolBarTray Grid.Row="0">
                 <ToolBar Margin="5" Padding="5">
-                    <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_Font" >
-                        <!-- SelectedIndex="2" - означает что по умолчанию выбираем Arial  -->
-                        <TextBlock Text="Arial"/>
-                        <TextBlock Text="Times New Roman"/>
-                        <TextBlock Text="Verdana"/>
-                    </ComboBox>
-                    <ComboBox Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_Font_Size" >
-                        <!-- SelectedIndex="2" - означает что по умолчанию выбираем <TextBlock Text="16"/>  -->
-                        <TextBlock Text="12"/>
-                        <TextBlock Text="14"/>
-                        <TextBlock Text="16"/>
-                    </ComboBox>
+                    <ComboBox Margin="5" Padding="5" SelectedIndex="0" Width="200" SelectionChanged="ComboBox_Font" ItemsSource="{StaticResource fontsList}" />
+                    <!-- SelectedIndex="0" - означает что по умолчанию выбираем 1е из списка ресурсов -->
+                    <!-- ItemsSource - ключ к привязке данных  -->
+
+                    <ComboBox Margin="5" Padding="5" SelectedIndex="2" Width="50" SelectionChanged="ComboBox_Font_Size" ItemsSource="{StaticResource sizeList}" />
+
+
                 </ToolBar>
                 <ToolBar Margin="5" Padding="5" VerticalAlignment="Top">
                     <Button Width="50" Height="50" Click="Button_Click_B">

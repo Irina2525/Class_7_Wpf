@@ -56,31 +56,37 @@ namespace Class_7_Wpf
 
         private void ComboBox_Font(object sender, SelectionChangedEventArgs e)
         {
-            string fontName = ((sender as ComboBox).SelectedItem as TextBlock).Text;
+
             if (textBox != null)
             {
-                textBox.FontFamily = new FontFamily(fontName);
+                string fontName = (sender as ComboBox).SelectedItem as String;
+                FontFamily font = new FontFamily(fontName);
+                textBox.FontFamily = font;
+
             }
         }
 
         private void ComboBox_Font_Size(object sender, SelectionChangedEventArgs e)
         {
-            double fontSize = Convert.ToDouble(((sender as ComboBox).SelectedItem as TextBlock).Text);
+
             if (textBox != null)
             {
-                textBox.FontSize = fontSize;
+                string fontSize = (sender as ComboBox).SelectedItem as String;
+                double size = Convert.ToDouble(fontSize);
+                textBox.FontSize = size;
+
             }
         }
 
         private void Button_Click_B(object sender, RoutedEventArgs e)
         {
-            if (textBox.FontWeight == FontWeights.Normal)
+            if (textBox.FontWeight == FontWeights.Normal) // если текст Normal
             {
-                textBox.FontWeight = FontWeights.Bold;
+                textBox.FontWeight = FontWeights.Bold; // то делаем его жирный
             }
             else
             {
-                textBox.FontWeight = FontWeights.Normal;
+                textBox.FontWeight = FontWeights.Normal; // если нет  делаем Normal
             }
         }
 
